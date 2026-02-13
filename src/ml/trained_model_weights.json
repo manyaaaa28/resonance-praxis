@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "trained_at": "2026-02-13T15:49:37.291159",
+    "dataset_rows": 3900,
+    "dataset_file": "shopping_trends.csv",
+    "framework": "scikit-learn",
+    "python_version": "3.x"
+  },
+  "logistic_regression": {
+    "model_type": "logistic_regression",
+    "feature_names": [
+      "price_sensitivity",
+      "loyalty_score",
+      "impulse_score",
+      "quality_preference",
+      "Age",
+      "Previous Purchases",
+      "Review Rating",
+      "Purchase Amount (USD)"
+    ],
+    "coefficients": {
+      "price_sensitivity": 5.314145,
+      "loyalty_score": 2.54414,
+      "impulse_score": 0.627526,
+      "quality_preference": -1.961099,
+      "Age": 0.781762,
+      "Previous Purchases": -0.35199,
+      "Review Rating": 0.414012,
+      "Purchase Amount (USD)": 4.047363
+    },
+    "intercept": -1.503073,
+    "scaler": {
+      "mean": [
+        0.32823076923076927,
+        0.29010256410256413,
+        0.19425641025641027,
+        0.24814102564102564,
+        44.06846153846154,
+        25.35153846153846,
+        3.7499487179487176,
+        59.76435897435898
+      ],
+      "scale": [
+        0.24282619737206596,
+        0.18269208996838127,
+        0.1630725366286376,
+        0.15786964960249555,
+        15.205639311252432,
+        14.445272856181926,
+        0.7161309846066857,
+        23.68235546744711
+      ]
+    },
+    "metrics": {
+      "accuracy": 0.9833,
+      "f1_score": 0.98,
+      "train_samples": 3120,
+      "test_samples": 780
+    }
+  },
+  "kmeans": {
+    "model_type": "kmeans",
+    "k": 4,
+    "feature_names": [
+      "price_sensitivity",
+      "loyalty_score",
+      "impulse_score",
+      "quality_preference"
+    ],
+    "persona_centroids": {
+      "budget": {
+        "centroid": {
+          "price_sensitivity": 0.5626,
+          "loyalty_score": 0.4934,
+          "impulse_score": 0.1621,
+          "quality_preference": 0.189
+        },
+        "centroid_scaled": [
+          0.9651044495179376,
+          1.1126484920573168,
+          -0.19714933348227642,
+          -0.37468577378410955
+        ],
+        "count": 1049
+      },
+      "loyal": {
+        "centroid": {
+          "price_sensitivity": 0.0719,
+          "loyalty_score": 0.2447,
+          "impulse_score": 0.1513,
+          "quality_preference": 0.4276
+        },
+        "centroid_scaled": [
+          -1.0557917781013857,
+          -0.24835972453524086,
+          -0.26368116765987765,
+          1.1368251806444933
+        ],
+        "count": 1034
+      },
+      "impulse": {
+        "centroid": {
+          "price_sensitivity": 0.2867,
+          "loyalty_score": 0.2395,
+          "impulse_score": 0.4153,
+          "quality_preference": 0.1987
+        },
+        "centroid_scaled": [
+          -0.17106372570664966,
+          -0.27674344234374315,
+          1.3557123872711292,
+          -0.31296992733164986
+        ],
+        "count": 788
+      },
+      "premium": {
+        "centroid": {
+          "price_sensitivity": 0.3788,
+          "loyalty_score": 0.1671,
+          "impulse_score": 0.1006,
+          "quality_preference": 0.1659
+        },
+        "centroid_scaled": [
+          0.20842744221309822,
+          -0.6731651138029856,
+          -0.5741255791572963,
+          -0.520913022784242
+        ],
+        "count": 1029
+      }
+    },
+    "scaler": {
+      "mean": [
+        0.32823076923076927,
+        0.29010256410256413,
+        0.19425641025641027,
+        0.24814102564102564
+      ],
+      "scale": [
+        0.24282619737206596,
+        0.18269208996838127,
+        0.1630725366286376,
+        0.15786964960249555
+      ]
+    },
+    "cluster_to_persona": {
+      "0": "budget",
+      "1": "loyal",
+      "3": "impulse",
+      "2": "premium"
+    },
+    "metrics": {
+      "silhouette_score": 0.2339,
+      "total_customers": 3900,
+      "cluster_sizes": {
+        "budget": 1049,
+        "loyal": 1034,
+        "impulse": 788,
+        "premium": 1029
+      }
+    }
+  },
+  "random_forest": {
+    "model_type": "random_forest",
+    "feature_names": [
+      "price_sensitivity",
+      "loyalty_score",
+      "impulse_score",
+      "quality_preference",
+      "Age",
+      "Previous Purchases",
+      "Review Rating",
+      "Purchase Amount (USD)"
+    ],
+    "feature_importances": {
+      "price_sensitivity": 0.05304,
+      "loyalty_score": 0.203273,
+      "impulse_score": 0.029737,
+      "quality_preference": 0.031386,
+      "Age": 0.051964,
+      "Previous Purchases": 0.112491,
+      "Review Rating": 0.460961,
+      "Purchase Amount (USD)": 0.057149
+    },
+    "scaler": {
+      "mean": [
+        0.32823076923076927,
+        0.29010256410256413,
+        0.19425641025641027,
+        0.24814102564102564,
+        44.06846153846154,
+        25.35153846153846,
+        3.7499487179487176,
+        59.76435897435898
+      ],
+      "scale": [
+        0.24282619737206596,
+        0.18269208996838127,
+        0.1630725366286376,
+        0.15786964960249555,
+        15.205639311252432,
+        14.445272856181926,
+        0.7161309846066857,
+        23.68235546744711
+      ]
+    },
+    "thresholds": {
+      "high_risk_threshold": 0.6,
+      "medium_risk_threshold": 0.3
+    },
+    "probability_bins": {
+      "low_loyalty_high_churn": 0.7022,
+      "high_loyalty_low_churn": 0.1661,
+      "low_frequency_churn": 0.5617,
+      "high_frequency_churn": 0.4955,
+      "low_rating_churn": 0.8433,
+      "high_rating_churn": 0.3073
+    },
+    "metrics": {
+      "accuracy": 0.7859,
+      "f1_score": 0.7709,
+      "n_estimators": 100,
+      "max_depth": 8,
+      "train_samples": 3120,
+      "test_samples": 780
+    }
+  }
+}
