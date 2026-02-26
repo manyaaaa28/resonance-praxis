@@ -6,8 +6,6 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML%20Models-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![Gemini](https://img.shields.io/badge/Google-Gemini%20AI-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev)
 [![License](https://img.shields.io/badge/License-MIT-6D28D9?style=flat-square)](LICENSE)
-[![Hackathon](https://img.shields.io/badge/Built%20for-Praxis%202.0-FF6B6B?style=flat-square)](/)
-
 ---
 
 > *"We don't just tell you that sales will drop — we show you **which customers will leave**, **why they're unhappy**, and **what specific price brings them back** — all by simulating thousands of AI Digital Twins in seconds."*
