@@ -3418,275 +3418,358 @@
     <div class="main-container">
         <!-- Left Sidebar -->
         <aside class="sidebar">
-            <!-- How It Works -->
-            <div class="how-it-works">
-                <h3>🎯 The Resonance Way</h3>
-                <div class="step-list">
-                    <div class="step-item active" data-step="1">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Clone</h4>
-                            <p>Create AI Digital Twins from your data</p>
-                        </div>
-                    </div>
-                    <div class="step-item" data-step="2">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Simulate</h4>
-                            <p>Adjust pricing and conditions</p>
-                        </div>
-                    </div>
-                    <div class="step-item" data-step="3">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Watch</h4>
-                            <p>See customers react in real-time</p>
-                        </div>
-                    </div>
-                    <div class="step-item" data-step="4">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Decide</h4>
-                            <p>Get predictions before you act</p>
-                        </div>
+            <!-- Progress Indicator -->
+            <div class="how-it-works" style="margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3 style="font-size: 13px; font-weight: 600;">📋 Setup Steps</h3>
+                    <span style="font-size: 11px; color: var(--text-muted);" id="stepCounter">Step 1/9</span>
+                </div>
+                <div style="height: 4px; background: var(--bg-dark); border-radius: 4px; overflow: hidden;">
+                    <div id="progressBar"
+                        style="width: 11.11%; height: 100%; background: var(--gradient-primary); border-radius: 4px; transition: width 0.3s ease;">
                     </div>
                 </div>
             </div>
 
-            <!-- Current Price Input -->
-            <div class="control-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    Current Price
-                </div>
-                <div class="price-input-wrapper">
-                    <span class="currency-symbol">₹</span>
-                    <input type="number" id="priceInput" class="price-input" value="1499" min="1" max="100000"
-                        placeholder="1499">
-                </div>
-                <div class="new-price-display" id="newPriceDisplay">
-                    New price: <span id="newPriceValue">₹1,199.20</span>
-                </div>
-            </div>
-
-            <!-- Price Change Control -->
-            <div class="control-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M8 12h8M12 8v8"></path>
-                    </svg>
-                    Price Change
-                </div>
-                <div class="control-value" id="discountValue">-20%</div>
-                <div class="slider-container">
-                    <input type="range" id="discountSlider" min="-100" max="100" value="-20">
-                    <div class="slider-ticks">
-                        <span class="slider-tick" onclick="setSliderValue(-100)">-100%</span>
-                        <span class="slider-tick" onclick="setSliderValue(-50)">-50%</span>
-                        <span class="slider-tick" onclick="setSliderValue(0)">0%</span>
-                        <span class="slider-tick" onclick="setSliderValue(50)">+50%</span>
-                        <span class="slider-tick" onclick="setSliderValue(100)">+100%</span>
+            <!-- Step 1: Product Name -->
+            <div class="step-container" id="step1" style="display: block;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Product Name
                     </div>
-                </div>
-            </div>
-
-            <!-- Product Category -->
-            <div class="control-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z">
-                        </path>
-                    </svg>
-                    Product Category
-                </div>
-
-                <!-- Season Toggle Switch -->
-                <div class="season-toggle-container">
-                    <div class="season-toggle">
-                        <div class="season-toggle-slider" id="seasonSlider"></div>
-                        <button class="season-toggle-btn summer active" onclick="switchSeasonTab('summer', this)"
-                            data-season="summer">
-                            <span class="season-icon">☀️</span>
-                            <span class="season-label">Summer</span>
-                        </button>
-                        <button class="season-toggle-btn winter" onclick="switchSeasonTab('winter', this)"
-                            data-season="winter">
-                            <span class="season-icon">❄️</span>
-                            <span class="season-label">Winter</span>
-                        </button>
-                        <button class="season-toggle-btn allseason" onclick="switchSeasonTab('allseason', this)"
-                            data-season="allseason">
-                            <span class="season-icon">🌍</span>
-                            <span class="season-label">All Year</span>
-                        </button>
+                    <div class="price-input-wrapper" style="margin-bottom: 12px;">
+                        <input type="text" id="productNameInput" class="price-input" placeholder="e.g. Summer T-Shirt"
+                            value="Premium T-Shirt">
                     </div>
-                </div>
-
-                <!-- Season Panels -->
-                <div class="season-panels">
-                    <div class="season-panel active" id="panel-summer">
-                        <div class="category-grid-4">
-                            <div class="category-card" onclick="setCategory('sundress', this)">
-                                <span class="category-emoji">👗</span>
-                                <span class="category-card-label">Sundress</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('shorts', this)">
-                                <span class="category-emoji">🩳</span>
-                                <span class="category-card-label">Shorts</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('tanktop', this)">
-                                <span class="category-emoji">🎽</span>
-                                <span class="category-card-label">Tanks</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('sandals', this)">
-                                <span class="category-emoji">🩴</span>
-                                <span class="category-card-label">Sandals</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('swimwear', this)">
-                                <span class="category-emoji">👙</span>
-                                <span class="category-card-label">Swim</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('linenshirt', this)">
-                                <span class="category-emoji">👔</span>
-                                <span class="category-card-label">Linen</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('sunglasses', this)">
-                                <span class="category-emoji">🕶️</span>
-                                <span class="category-card-label">Shades</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('cap', this)">
-                                <span class="category-emoji">🧢</span>
-                                <span class="category-card-label">Caps</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="season-panel" id="panel-winter">
-                        <div class="category-grid-4">
-                            <div class="category-card" onclick="setCategory('jacket', this)">
-                                <span class="category-emoji">🧥</span>
-                                <span class="category-card-label">Jackets</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('sweater', this)">
-                                <span class="category-emoji">🧶</span>
-                                <span class="category-card-label">Sweaters</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('boots', this)">
-                                <span class="category-emoji">👢</span>
-                                <span class="category-card-label">Boots</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('scarf', this)">
-                                <span class="category-emoji">🧣</span>
-                                <span class="category-card-label">Scarves</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('coat', this)">
-                                <span class="category-emoji">🥼</span>
-                                <span class="category-card-label">Coats</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('hoodie', this)">
-                                <span class="category-emoji">👕</span>
-                                <span class="category-card-label">Hoodies</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('gloves', this)">
-                                <span class="category-emoji">🧤</span>
-                                <span class="category-card-label">Gloves</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('beanie', this)">
-                                <span class="category-emoji">🎿</span>
-                                <span class="category-card-label">Beanies</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="season-panel" id="panel-allseason">
-                        <div class="category-grid-4">
-                            <div class="category-card active" onclick="setCategory('tshirts', this)">
-                                <span class="category-emoji">👕</span>
-                                <span class="category-card-label">T-Shirts</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('jeans', this)">
-                                <span class="category-emoji">👖</span>
-                                <span class="category-card-label">Jeans</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('sneakers', this)">
-                                <span class="category-emoji">👟</span>
-                                <span class="category-card-label">Sneakers</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('bags', this)">
-                                <span class="category-emoji">👜</span>
-                                <span class="category-card-label">Bags</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('watches', this)">
-                                <span class="category-emoji">⌚</span>
-                                <span class="category-card-label">Watches</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('shirts', this)">
-                                <span class="category-emoji">👔</span>
-                                <span class="category-card-label">Shirts</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('jewelry', this)">
-                                <span class="category-emoji">💍</span>
-                                <span class="category-card-label">Jewelry</span>
-                            </div>
-                            <div class="category-card" onclick="setCategory('belts', this)">
-                                <span class="category-emoji">🥋</span>
-                                <span class="category-card-label">Belts</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Brand Tier -->
-            <div class="control-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polygon
-                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                        </polygon>
-                    </svg>
-                    Brand Tier
-                </div>
-                <div class="brand-tiers">
-                    <button class="brand-tier luxury" onclick="setBrand('luxury', this)">
-                        <span class="brand-tier-icon">👑</span>
-                        Luxury
-                    </button>
-                    <button class="brand-tier premium active" onclick="setBrand('premium', this)">
-                        <span class="brand-tier-icon">💎</span>
-                        Premium
-                    </button>
-                    <button class="brand-tier value" onclick="setBrand('value', this)">
-                        <span class="brand-tier-icon">💰</span>
-                        Value
+                    <button class="run-btn" onclick="nextStep(1)"
+                        style="padding: 12px; font-size: 13px; margin-top: 8px;">
+                        Continue →
                     </button>
                 </div>
             </div>
 
-            <!-- Season Selection -->
-            <div class="control-card">
-                <div class="section-title">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <path
-                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
-                        </path>
-                    </svg>
-                    Season
-                </div>
-                <div class="season-grid">
-                    <button class="season-btn active" onclick="setSeason('spring', this)">🌸 Spring</button>
-                    <button class="season-btn" onclick="setSeason('summer', this)">☀️ Summer</button>
-                    <button class="season-btn" onclick="setSeason('fall', this)">🍂 Fall</button>
-                    <button class="season-btn" onclick="setSeason('winter', this)">❄️ Winter</button>
+            <!-- Step 2: Current Price -->
+            <div class="step-container" id="step2" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                        Current Price
+                    </div>
+                    <div class="price-input-wrapper">
+                        <span class="currency-symbol">₹</span>
+                        <input type="number" id="priceInput" class="price-input" value="1499" min="1" max="100000"
+                            placeholder="1499">
+                    </div>
+                    <div class="new-price-display" id="newPriceDisplay">
+                        New price: <span id="newPriceValue">₹1,199.20</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; margin-top: 16px;">
+                        <button class="brand-tier" onclick="prevStep(2)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(2)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Stats -->
-            <div class="control-card">
+            <!-- Step 3: Price Change Slider -->
+            <div class="step-container" id="step3" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 12h8M12 8v8"></path>
+                        </svg>
+                        Price Change
+                    </div>
+
+                    <!-- Percentage Display -->
+                    <div class="control-value" id="discountValue">-20%</div>
+
+                    <!-- Price Impact Display -->
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin: 8px 0 12px;">
+                        <div style="font-size: 12px; color: var(--text-muted);">Original: <span
+                                style="color: var(--text-primary); font-weight: 600;">₹1,499</span></div>
+                        <div style="font-size: 14px; color: var(--text-muted);">→</div>
+                        <div style="font-size: 14px; font-weight: 700; color: #10b981;" id="newPriceValueStep3">₹1,199
+                        </div>
+                    </div>
+
+                    <!-- Slider -->
+                    <div class="slider-container">
+                        <input type="range" id="discountSlider" min="-100" max="100" value="-20">
+                        <div class="slider-ticks">
+                            <span class="slider-tick" onclick="setSliderValue(-100)">-100%</span>
+                            <span class="slider-tick" onclick="setSliderValue(-50)">-50%</span>
+                            <span class="slider-tick" onclick="setSliderValue(0)">0%</span>
+                            <span class="slider-tick" onclick="setSliderValue(50)">+50%</span>
+                            <span class="slider-tick" onclick="setSliderValue(100)">+100%</span>
+                        </div>
+                    </div>
+
+                    <!-- Impact Badge -->
+                    <div
+                        style="margin-top: 12px; padding: 8px; border-radius: 8px; background: var(--bg-dark); display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 11px; color: var(--text-muted);">Impact:</span>
+                        <span id="impactBadge"
+                            style="font-size: 11px; font-weight: 600; padding: 4px 8px; border-radius: 4px; background: rgba(16, 185, 129, 0.1); color: #10b981;">
+                            -20% (Save ₹300)
+                        </span>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; margin-top: 16px;">
+                        <button class="brand-tier" onclick="prevStep(3)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(3)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Season/Category (First Level) -->
+            <div class="step-container" id="step4" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                            </path>
+                        </svg>
+                        Select Season
+                    </div>
+                    <div class="season-grid" style="margin-bottom: 16px;">
+                        <button class="season-btn" onclick="selectSeason('spring', this)">🌸 Spring</button>
+                        <button class="season-btn" onclick="selectSeason('summer', this)">☀️ Summer</button>
+                        <button class="season-btn" onclick="selectSeason('fall', this)">🍂 Fall</button>
+                        <button class="season-btn" onclick="selectSeason('winter', this)">❄️ Winter</button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="brand-tier" onclick="prevStep(4)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(4)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Specific Category (Second Level) -->
+            <div class="step-container" id="step5" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z">
+                            </path>
+                        </svg>
+                        Product Type
+                    </div>
+                    <div class="category-grid-4" id="categoryGrid">
+                        <!-- Categories will be populated dynamically based on season -->
+                    </div>
+                    <div style="display: flex; gap: 8px; margin-top: 16px;">
+                        <button class="brand-tier" onclick="prevStep(5)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(5)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Cloth Age Category -->
+            <div class="step-container" id="step6" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Age Category
+                    </div>
+                    <div class="brand-tiers" style="margin-bottom: 16px;">
+                        <button class="brand-tier" onclick="setAgeCategory('kids', this)">
+                            <span class="brand-tier-icon">🧒</span>
+                            Kids
+                        </button>
+                        <button class="brand-tier" onclick="setAgeCategory('teens', this)">
+                            <span class="brand-tier-icon">👦</span>
+                            Teens
+                        </button>
+                        <button class="brand-tier" onclick="setAgeCategory('adults', this)">
+                            <span class="brand-tier-icon">👨</span>
+                            Adults
+                        </button>
+                        <button class="brand-tier" onclick="setAgeCategory('seniors', this)">
+                            <span class="brand-tier-icon">👴</span>
+                            Seniors
+                        </button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="brand-tier" onclick="prevStep(6)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(6)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Brand Tier -->
+            <div class="step-container" id="step7" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>
+                        Brand Tier
+                    </div>
+                    <div class="brand-tiers" style="margin-bottom: 16px;">
+                        <button class="brand-tier luxury" onclick="setBrand('luxury', this)">
+                            <span class="brand-tier-icon">👑</span>
+                            Luxury
+                        </button>
+                        <button class="brand-tier premium active" onclick="setBrand('premium', this)">
+                            <span class="brand-tier-icon">💎</span>
+                            Premium
+                        </button>
+                        <button class="brand-tier value" onclick="setBrand('value', this)">
+                            <span class="brand-tier-icon">💰</span>
+                            Value
+                        </button>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="brand-tier" onclick="prevStep(7)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(7)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Shop Location -->
+            <div class="step-container" id="step8" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Shop Location
+                    </div>
+                    <div class="custom-select" style="margin-bottom: 16px;">
+                        <select id="shopLocation">
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="kolkata">Kolkata</option>
+                            <option value="pune">Pune</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="ahmedabad">Ahmedabad</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="brand-tier" onclick="prevStep(8)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(8)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9: Daily Sales Estimate -->
+            <div class="step-container" id="step9" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Daily Sales Estimate
+                    </div>
+                    <div class="brand-tiers" style="margin-bottom: 16px;">
+                        <button class="brand-tier" onclick="setDailySales(10, this)">10 pcs</button>
+                        <button class="brand-tier" onclick="setDailySales(20, this)">20 pcs</button>
+                        <button class="brand-tier" onclick="setDailySales(50, this)">50 pcs</button>
+                        <button class="brand-tier" onclick="setDailySales(100, this)">100 pcs</button>
+                    </div>
+                    <div class="price-input-wrapper" style="margin-bottom: 12px;">
+                        <input type="number" id="customDailySales" class="price-input" placeholder="Custom amount"
+                            min="1">
+                    </div>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="brand-tier" onclick="prevStep(9)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" onclick="nextStep(9)" style="flex: 2; padding: 12px;">Continue
+                            →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 10: Summary View -->
+            <div class="step-container" id="step10" style="display: none;">
+                <div class="control-card">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        Confirm Your Selections
+                    </div>
+
+                    <div style="background: var(--bg-dark); border-radius: 10px; padding: 16px; margin: 12px 0;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Product</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryProduct">Premium T-Shirt
+                                </div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Price</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryPrice">₹1,199</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Category</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryCategory">T-Shirts</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Age Group</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryAge">Adults</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Brand</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryBrand">Premium</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Location</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryLocation">Mumbai</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Daily Sales</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryDaily">20 pcs</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 10px; color: var(--text-muted);">Discount</div>
+                                <div style="font-size: 13px; font-weight: 600;" id="summaryDiscount">-20%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px;">
+                        <button class="brand-tier" onclick="prevStep(10)" style="flex: 1;">← Back</button>
+                        <button class="run-btn" id="runBtn" onclick="runSimulation()" style="flex: 2;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            Run Simulation
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Card (Moved to bottom) -->
+            <div class="control-card" style="margin-top: auto;">
                 <div class="section-title">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -3706,14 +3789,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Run Button -->
-            <button class="run-btn" id="runBtn" onclick="runSimulation()">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                Run Simulation
-            </button>
         </aside>
 
         <!-- Center Simulation Area -->
@@ -3757,7 +3832,13 @@
                         <!-- Cards will be dynamically added here -->
                     </div>
                 </div>
+            </div>
         </main>
+
+        <!-- Thoughts Panel elements (hidden, used by JS) -->
+        <div id="liveIndicator" style="display:none;"></div>
+        <div id="thoughtStream" style="display:none;"></div>
+        <div id="emptyThoughts" style="display:none;"></div>
     </div>
 
     <script>
@@ -3946,23 +4027,67 @@
         // Update new price display
         function updateNewPrice() {
             const newPrice = state.price * (1 + state.discount / 100);
-            const newPriceEl = document.getElementById('newPriceValue');
-            const displayEl = document.getElementById('newPriceDisplay');
+            const priceDiff = Math.abs(state.price - newPrice);
 
-            if (state.discount > 0) {
-                newPriceEl.textContent = '₹' + newPrice.toFixed(2);
-                newPriceEl.style.color = '#ef4444'; // Red for price increase
-                displayEl.childNodes[0].textContent = 'New price: ';
-            } else if (state.discount < 0) {
-                newPriceEl.textContent = '₹' + newPrice.toFixed(2);
-                newPriceEl.style.color = '#10b981'; // Green for discount
-                displayEl.childNodes[0].textContent = 'Sale price: ';
-            } else {
-                newPriceEl.textContent = '₹' + state.price.toFixed(2);
-                newPriceEl.style.color = 'var(--text-muted)';
-                displayEl.childNodes[0].textContent = 'No change: ';
+            // Update new price display
+            const newPriceEl = document.getElementById('newPriceValue');
+            const newPriceStep3 = document.getElementById('newPriceValueStep3');
+            const discountValueEl = document.getElementById('discountValue');
+            const impactBadge = document.getElementById('impactBadge');
+
+            if (newPriceEl) {
+                newPriceEl.textContent = '₹' + newPrice.toFixed(0);
+
+                // Color based on price change
+                if (state.discount > 0) {
+                    newPriceEl.style.color = '#ef4444'; // Red for increase
+                } else if (state.discount < 0) {
+                    newPriceEl.style.color = '#10b981'; // Green for discount
+                } else {
+                    newPriceEl.style.color = 'var(--text-primary)'; // White for no change
+                }
+            }
+
+            // Also update step 3 price display
+            if (newPriceStep3) {
+                newPriceStep3.textContent = '₹' + newPrice.toFixed(0);
+                if (state.discount > 0) {
+                    newPriceStep3.style.color = '#ef4444';
+                } else if (state.discount < 0) {
+                    newPriceStep3.style.color = '#10b981';
+                } else {
+                    newPriceStep3.style.color = 'var(--text-primary)';
+                }
+            }
+
+            // Update percentage display
+            if (discountValueEl) {
+                const prefix = state.discount > 0 ? '+' : '';
+                discountValueEl.textContent = prefix + state.discount + '%';
+            }
+
+            // Update impact badge
+            if (impactBadge) {
+                if (state.discount < 0) {
+                    // Discount
+                    impactBadge.innerHTML = `${state.discount}% (Save ₹${priceDiff.toFixed(0)})`;
+                    impactBadge.style.background = 'rgba(16, 185, 129, 0.1)';
+                    impactBadge.style.color = '#10b981';
+                } else if (state.discount > 0) {
+                    // Price increase
+                    impactBadge.innerHTML = `+${state.discount}% (₹${priceDiff.toFixed(0)} more)`;
+                    impactBadge.style.background = 'rgba(239, 68, 68, 0.1)';
+                    impactBadge.style.color = '#ef4444';
+                } else {
+                    // No change
+                    impactBadge.innerHTML = '0% (No change)';
+                    impactBadge.style.background = 'rgba(255, 255, 255, 0.1)';
+                    impactBadge.style.color = 'var(--text-muted)';
+                }
             }
         }
+
+        // (Duplicate event listeners and setSliderValue removed — see canonical versions below)
 
         // Price input handler
         const priceInput = document.getElementById('priceInput');
@@ -4038,10 +4163,12 @@
             if (actionEl) actionEl.innerHTML = `<span>${action.split(' ')[0]}</span> ${action.split(' ').slice(1).join(' ')}`;
         }
 
-        // Update progress bar
-        function updateProgress(percent) {
-            document.getElementById('progressFill').style.width = percent + '%';
-            document.getElementById('progressPercent').textContent = percent + '%';
+        // Update simulation progress bar (inside the sim-progress card)
+        function updateSimProgress(percent) {
+            const fill = document.getElementById('progressFill');
+            const text = document.getElementById('progressPercent');
+            if (fill) fill.style.width = percent + '%';
+            if (text) text.textContent = percent + '%';
         }
 
         // Reset agent cards
@@ -4193,11 +4320,11 @@
 
             welcomeState.style.display = 'none';
             dashboardView.classList.add('show');
-            liveIndicator.classList.add('show');
+            if (liveIndicator) liveIndicator.classList.add('show');
 
             updateScenarioCard();
             resetAgentCards();
-            updateProgress(0);
+            updateSimProgress(0);
 
             if (emptyThoughts) emptyThoughts.style.display = 'none';
             updateSteps(3);
@@ -4258,7 +4385,7 @@
                                         <p class="thought-text">${data.thought}</p>
                                         <div class="thought-action">${data.action}</div>
                                     `;
-                                    thoughtStream.insertBefore(bubble, thoughtStream.firstChild);
+                                    if (thoughtStream) thoughtStream.insertBefore(bubble, thoughtStream.firstChild);
 
                                     // Update agent card
                                     updateAgentCard(agentKey, data.thought, data.action);
@@ -4267,7 +4394,7 @@
                                 break;
 
                             case 'progress':
-                                updateProgress(data.progress);
+                                updateSimProgress(data.progress);
                                 break;
 
                             case 'metrics':
@@ -4347,10 +4474,10 @@
                     const { bubble, thought, action } = createThought(agent, level);
 
                     updateAgentCard(key, thought, action);
-                    thoughtStream.insertBefore(bubble, thoughtStream.firstChild);
+                    if (thoughtStream) thoughtStream.insertBefore(bubble, thoughtStream.firstChild);
 
                     const progress = Math.round(((index + 1) / shuffled.length) * 100);
-                    updateProgress(progress);
+                    updateSimProgress(progress);
 
                     if (index === 0) updateMetrics();
 
@@ -4478,8 +4605,15 @@
                 season: state.season
             });
 
-            // Connect to backend SSE stream
-            const eventSource = new EventSource(`/api/simulate/stream?${params}`);
+            // Connect to backend SSE stream (wrapped in try-catch for file:// protocol)
+            let eventSource;
+            try {
+                eventSource = new EventSource(`/api/simulate/stream?${params}`);
+            } catch (e) {
+                console.warn('EventSource failed, falling back to client-side:', e);
+                runFallbackSimulation();
+                return;
+            }
             let agentCount = 0;
             let lastMetrics = null;
 
@@ -5730,160 +5864,440 @@
             </div>
         </div>
     </div>
-    </head>
+    <!-- Background canvas and additional scripts -->
+    <!-- BACKGROUND CANVAS -->
+    <canvas id="bg-canvas"></canvas>
 
-    <body>
-        <!-- BACKGROUND CANVAS -->
-        <canvas id="bg-canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
 
-        <script>
-            const canvas = document.getElementById('bg-canvas');
-            const ctx = canvas.getContext('2d');
-            let particles = [];
-            let mouse = { x: null, y: null };
+        // resize
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        }
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
 
-            // resize
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                init();
+        // Particle Class
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
             }
-            window.addEventListener('resize', resize);
-            window.addEventListener('mousemove', (e) => {
-                mouse.x = e.x;
-                mouse.y = e.y;
-            });
 
-            // Particle Class
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() * canvas.height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.size = Math.random() * 2 + 1;
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+                // Mouse Interaction
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 150) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (150 - distance) / 150;
+                    this.vx += forceDirectionX * force * 0.05;
+                    this.vy += forceDirectionY * force * 0.05;
                 }
+            }
 
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
+            draw() {
+                ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
 
-                    // Bounce
-                    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        function init() {
+            particles = [];
+            for (let i = 0; i < 80; i++) particles.push(new Particle());
+        }
 
-                    // Mouse Interaction
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
                     let distance = Math.sqrt(dx * dx + dy * dy);
+
                     if (distance < 150) {
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (150 - distance) / 150;
-                        this.vx += forceDirectionX * force * 0.05;
-                        this.vy += forceDirectionY * force * 0.05;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${1 - distance / 150})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
                     }
                 }
+                particles[i].update();
+                particles[i].draw();
+            }
+            requestAnimationFrame(animate);
+        }
 
-                draw() {
-                    ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
+        // ===== TYPEWRITER EFFECT =====
+        const phrases = [
+            "Predict Customer Behavior.",
+            "Analyze Market Trends.",
+            "Optimize Revenue Strategy.",
+            "Act With Confidence."
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeSpeed = 100;
+        const deleteSpeed = 50;
+        const pauseTime = 2000;
+        const typewriterEl = document.getElementById('typewriter');
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (isDeleting) {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
             }
 
-            function init() {
-                particles = [];
-                for (let i = 0; i < 80; i++) particles.push(new Particle());
+            let nextSpeed = isDeleting ? deleteSpeed : typeSpeed;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                nextSpeed = pauseTime;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                nextSpeed = 500;
             }
 
-            function animate() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            setTimeout(type, nextSpeed);
+        }
 
-                // Draw connections
-                for (let i = 0; i < particles.length; i++) {
-                    for (let j = i; j < particles.length; j++) {
-                        let dx = particles[i].x - particles[j].x;
-                        let dy = particles[i].y - particles[j].y;
-                        let distance = Math.sqrt(dx * dx + dy * dy);
+        // Start Typewriter
+        setTimeout(type, 1000);
 
-                        if (distance < 150) {
-                            ctx.beginPath();
-                            ctx.strokeStyle = `rgba(99, 102, 241, ${1 - distance / 150})`;
-                            ctx.lineWidth = 1;
-                            ctx.moveTo(particles[i].x, particles[i].y);
-                            ctx.lineTo(particles[j].x, particles[j].y);
-                            ctx.stroke();
-                        }
-                    }
-                    particles[i].update();
-                    particles[i].draw();
-                }
-                requestAnimationFrame(animate);
-            }
+        // ===== MAGNETIC BUTTONS =====
+        const magneticBtns = document.querySelectorAll('.magnetic-btn');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
 
-            // ===== TYPEWRITER EFFECT =====
-            const phrases = [
-                "Predict Customer Behavior.",
-                "Analyze Market Trends.",
-                "Optimize Revenue Strategy.",
-                "Act With Confidence."
-            ];
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            const typeSpeed = 100;
-            const deleteSpeed = 50;
-            const pauseTime = 2000;
-            const typewriterEl = document.getElementById('typewriter');
-
-            function type() {
-                const currentPhrase = phrases[phraseIndex];
-
-                if (isDeleting) {
-                    typewriterEl.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typewriterEl.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                let nextSpeed = isDeleting ? deleteSpeed : typeSpeed;
-
-                if (!isDeleting && charIndex === currentPhrase.length) {
-                    isDeleting = true;
-                    nextSpeed = pauseTime;
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    nextSpeed = 500;
-                }
-
-                setTimeout(type, nextSpeed);
-            }
-
-            // Start Typewriter
-            setTimeout(type, 1000);
-
-            // ===== MAGNETIC BUTTONS =====
-            const magneticBtns = document.querySelectorAll('.magnetic-btn');
-            magneticBtns.forEach(btn => {
-                btn.addEventListener('mousemove', (e) => {
-                    const rect = btn.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-
-                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-                });
-
-                btn.addEventListener('mouseleave', () => {
-                    btn.style.transform = 'translate(0, 0)';
-                });
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
             });
 
-            resize();
-            animate();
-        </script>
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+
+        resize();
+        animate();
+    </script>
+
+    <!-- ===== STEP NAVIGATION SYSTEM - ADD THIS RIGHT HERE ===== -->
+    <script>
+        // Step Navigation System
+        let currentStep = 1;
+        const totalSteps = 10;
+
+        // Step navigation functions
+        function nextStep(step) {
+            // Save current step data
+            saveStepData(step);
+
+            // Move to next step
+            if (step < totalSteps) {
+                document.getElementById(`step${step}`).style.display = 'none';
+                document.getElementById(`step${step + 1}`).style.display = 'block';
+                currentStep = step + 1;
+                updateProgress();
+
+                // Special handling for specific steps
+                if (currentStep === 5) {
+                    updateCategoryGrid();
+                }
+            }
+        }
+
+        function prevStep(step) {
+            if (step > 1) {
+                document.getElementById(`step${step}`).style.display = 'none';
+                document.getElementById(`step${step - 1}`).style.display = 'block';
+                currentStep = step - 1;
+                updateProgress();
+            }
+        }
+
+        function updateProgress() {
+            document.getElementById('stepCounter').textContent = `Step ${currentStep}/${totalSteps}`;
+            const progressPercent = (currentStep / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progressPercent + '%';
+        }
+
+        function saveStepData(step) {
+            switch (step) {
+                case 1:
+                    state.productName = document.getElementById('productNameInput').value;
+                    break;
+                case 2:
+                    state.price = parseFloat(document.getElementById('priceInput').value) || 1499;
+                    break;
+                case 3:
+                    // Already saved via slider
+                    break;
+                case 6:
+                    // Age category saved via function
+                    break;
+                case 8:
+                    state.location = document.getElementById('shopLocation').value;
+                    break;
+            }
+        }
+
+        // Age category selection
+        let selectedAgeCategory = 'adults';
+        function setAgeCategory(category, btn) {
+            selectedAgeCategory = category;
+            document.querySelectorAll('.brand-tier').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Map to display names
+            const ageNames = { kids: 'Kids', teens: 'Teens', adults: 'Adults', seniors: 'Seniors' };
+            state.ageCategory = ageNames[category];
+        }
+
+        // Season selection for step 4
+        let selectedSeason = 'spring';
+        function selectSeason(season, btn) {
+            selectedSeason = season;
+            document.querySelectorAll('.season-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            state.season = season;
+        }
+
+        // Daily sales selection
+        let selectedDailySales = 20;
+        function setDailySales(amount, btn) {
+            selectedDailySales = amount;
+            document.querySelectorAll('.brand-tier').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('customDailySales').value = '';
+            state.dailySales = amount;
+        }
+
+        // Custom daily sales input
+        document.getElementById('customDailySales')?.addEventListener('input', function (e) {
+            if (this.value) {
+                document.querySelectorAll('.brand-tier').forEach(b => b.classList.remove('active'));
+                selectedDailySales = parseInt(this.value) || 0;
+                state.dailySales = selectedDailySales;
+            }
+        });
+
+        // Update category grid based on selected season
+        function updateCategoryGrid() {
+            const grid = document.getElementById('categoryGrid');
+            if (!grid) return;
+
+            const categories = {
+                spring: [
+                    { id: 'tshirts', name: 'T-Shirts', emoji: '👕' },
+                    { id: 'jeans', name: 'Jeans', emoji: '👖' },
+                    { id: 'shirts', name: 'Shirts', emoji: '👔' },
+                    { id: 'jackets', name: 'Light Jackets', emoji: '🧥' }
+                ],
+                summer: [
+                    { id: 'sundress', name: 'Sundress', emoji: '👗' },
+                    { id: 'shorts', name: 'Shorts', emoji: '🩳' },
+                    { id: 'tanktop', name: 'Tanks', emoji: '🎽' },
+                    { id: 'sandals', name: 'Sandals', emoji: '🩴' },
+                    { id: 'swimwear', name: 'Swimwear', emoji: '👙' },
+                    { id: 'sunglasses', name: 'Shades', emoji: '🕶️' },
+                    { id: 'cap', name: 'Caps', emoji: '🧢' }
+                ],
+                fall: [
+                    { id: 'jacket', name: 'Jackets', emoji: '🧥' },
+                    { id: 'hoodie', name: 'Hoodies', emoji: '👕' },
+                    { id: 'jeans', name: 'Jeans', emoji: '👖' },
+                    { id: 'boots', name: 'Boots', emoji: '👢' }
+                ],
+                winter: [
+                    { id: 'jacket', name: 'Jackets', emoji: '🧥' },
+                    { id: 'sweater', name: 'Sweaters', emoji: '🧶' },
+                    { id: 'boots', name: 'Boots', emoji: '👢' },
+                    { id: 'scarf', name: 'Scarves', emoji: '🧣' },
+                    { id: 'coat', name: 'Coats', emoji: '🥼' },
+                    { id: 'hoodie', name: 'Hoodies', emoji: '👕' },
+                    { id: 'gloves', name: 'Gloves', emoji: '🧤' },
+                    { id: 'beanie', name: 'Beanies', emoji: '🎿' }
+                ]
+            };
+
+            const seasonCategories = categories[selectedSeason] || categories.summer;
+            grid.innerHTML = '';
+
+            seasonCategories.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                card.onclick = () => {
+                    document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    state.category = cat.id;
+                };
+                card.innerHTML = `
+                    <span class="category-emoji">${cat.emoji}</span>
+                    <span class="category-card-label">${cat.name}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Override existing runSimulation to show summary
+        const originalRunSimulation = runSimulation;
+        runSimulation = function () {
+            updateSummary();
+            // Show summary step if not already there
+            if (currentStep < 10) {
+                document.getElementById(`step${currentStep}`).style.display = 'none';
+                document.getElementById('step10').style.display = 'block';
+                currentStep = 10;
+                updateProgress();
+            } else {
+                originalRunSimulation();
+            }
+        };
+
+        // Update summary with all selections
+        function updateSummary() {
+            document.getElementById('summaryProduct').textContent = state.productName || 'Premium T-Shirt';
+
+            const newPrice = state.price * (1 + state.discount / 100);
+            document.getElementById('summaryPrice').textContent = '₹' + newPrice.toFixed(0);
+
+            const categoryNames = {
+                tshirts: 'T-Shirts', jeans: 'Jeans', dresses: 'Dresses', jacket: 'Jackets',
+                sweater: 'Sweaters', shorts: 'Shorts', sandals: 'Sandals', boots: 'Boots',
+                sneakers: 'Sneakers', bags: 'Bags', watches: 'Watches', shirts: 'Shirts'
+            };
+            document.getElementById('summaryCategory').textContent = categoryNames[state.category] || state.category || 'T-Shirts';
+
+            document.getElementById('summaryAge').textContent = state.ageCategory || 'Adults';
+            document.getElementById('summaryBrand').textContent = state.brand || 'Premium';
+            document.getElementById('summaryLocation').textContent = state.location || 'Mumbai';
+            document.getElementById('summaryDaily').textContent = (state.dailySales || 20) + ' pcs';
+
+            const discountPrefix = state.discount > 0 ? '+' : '';
+            document.getElementById('summaryDiscount').textContent = discountPrefix + (state.discount || -20) + '%';
+        }
+
+        // Initialize first step
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hide all steps except first
+            for (let i = 2; i <= totalSteps; i++) {
+                const step = document.getElementById(`step${i}`);
+                if (step) step.style.display = 'none';
+            }
+
+            // Initialize state
+            state.productName = 'Premium T-Shirt';
+            state.ageCategory = 'Adults';
+            state.location = 'Mumbai';
+            state.dailySales = 20;
+
+            updateProgress();
+            updateCategoryGrid();
+
+            // Add feedback system listener
+            setupFeedbackSystem();
+        });
+
+        function setupFeedbackSystem() {
+            // Check if user is revisiting
+            const lastVisit = localStorage.getItem('lastSimulation');
+            if (lastVisit && simulationHistory.length > 0) {
+                setTimeout(() => {
+                    showFeedbackPrompt();
+                }, 2000);
+            }
+        }
+
+        function showFeedbackPrompt() {
+            const lastSim = simulationHistory[simulationHistory.length - 1];
+            const feedbackHTML = `
+                <div style="position: fixed; bottom: 100px; left: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; max-width: 280px; z-index: 1000; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                    <div style="font-size: 13px; font-weight: 600; margin-bottom: 8px;">📊 How's your business?</div>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Based on your last simulation for ${lastSim.category}, how are sales?</p>
+                    <div style="display: flex; gap: 8px;">
+                        <button onclick="sendFeedback('good')" style="flex:1; padding: 8px; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2); border-radius: 6px; color: #10b981; font-size: 11px;">👍 Good</button>
+                        <button onclick="sendFeedback('bad')" style="flex:1; padding: 8px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); border-radius: 6px; color: #ef4444; font-size: 11px;">👎 Bad</button>
+                        <button onclick="this.parentElement.parentElement.remove()" style="padding: 8px; background: var(--bg-dark); border: 1px solid var(--border); border-radius: 6px; color: var(--text-muted); font-size: 11px;">✕</button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', feedbackHTML);
+        }
+
+        function sendFeedback(rating) {
+            const lastSim = simulationHistory[simulationHistory.length - 1];
+
+            // Store feedback for ML learning
+            const feedbackData = {
+                simulation: lastSim,
+                rating: rating,
+                timestamp: new Date().toISOString()
+            };
+
+            // Save to localStorage for now (would send to backend in production)
+            const feedbackHistory = JSON.parse(localStorage.getItem('feedbackHistory') || '[]');
+            feedbackHistory.push(feedbackData);
+            localStorage.setItem('feedbackHistory', JSON.stringify(feedbackHistory));
+
+            // Remove prompt
+            document.querySelector('[style*="position: fixed; bottom: 100px;"]')?.remove();
+
+            // Show learning message
+            const msg = document.createElement('div');
+            msg.style.cssText = 'position: fixed; bottom: 100px; left: 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 12px; font-size: 12px; color: var(--accent); z-index: 1000;';
+            msg.textContent = rating === 'good' ? '🧠 Model learning from success' : '🧠 Model adjusting based on feedback';
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 3000);
+
+            // In production, this would trigger model retraining
+            console.log('Feedback recorded for ML:', feedbackData);
+        }
+
+        // Modify the existing addHistoryCard function to save to localStorage
+        const originalAddHistoryCard = addHistoryCard;
+        addHistoryCard = function (simData) {
+            originalAddHistoryCard(simData);
+            // Note: simulationHistory.push is already done in originalAddHistoryCard
+            localStorage.setItem('lastSimulation', JSON.stringify(simData));
+        };
+    </script>
+
 
 </html>
