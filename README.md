@@ -455,7 +455,7 @@ If the Gemini API is unavailable (network issues at the venue), the app **automa
 
 ## 👥 Team
 
-Built with ❤️ for **Praxis 2.0** by Team Resonance.
+Built with ❤️ for **Praxis 2.0** by Team Zackers.
 
 ---
 
